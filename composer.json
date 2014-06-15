@@ -1,0 +1,26 @@
+{
+    "name": "nicmart/arrayze",
+    "type": "library",
+    "description": "A callback-based decorator that gives array access to values.",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nicolò Martini",
+            "email": "nicmartnic@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "NicMart\\Arrayze\\": "src/",
+            "NicMart\\Arrayze\\Test\\": "tests"
+        }
+    }
+}
+
