@@ -1,18 +1,3 @@
-# Php library template
-
-This is the basic skeleton I use each time I create a new php library. It includes basic phpunit, travisci and composer configuration,
-and a basic folder structure.
-
-There are few template variables I substitute with a "find and replace" each time I initialize the library. This variables are
-- Arrayze The name of the library
-- arrayze The sluggified version of library name, used in composer configuration
-- A callback-based decorator that gives array access to values. A brief descrption of what the library does
-- NicMart\Arrayze The main library namespace. I usually set this equal to the camelized library name
-
-Other values like library author name and email are hardcoded in the files.
-
-What follows is the skeleton README.md file.
-
 # Arrayze
 [![Build Status](https://travis-ci.org/nicmart/Arrayze.png?branch=master)](https://travis-ci.org/nicmart/Arrayze)
 [![Coverage Status](https://coveralls.io/repos/nicmart/Arrayze/badge.png?branch=master)](https://coveralls.io/r/nicmart/Arrayze?branch=master)
