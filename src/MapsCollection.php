@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of library-template
+ * This file is part of Arrayze
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -66,6 +66,16 @@ class MapsCollection
     }
 
     /**
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function hasMap($name)
+    {
+        return isset($this->maps[$name]);
+    }
+
+    /**
      * @param string $mapName
      * @param mixed $value
      *
@@ -90,4 +100,6 @@ class MapsCollection
             yield $name => $map($value);
         }
     }
+
+
 } 

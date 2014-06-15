@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of library-template
+ * This file is part of Arrayze
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -10,7 +10,10 @@
 
 namespace NicMart\Arrayze;
 
-
+/**
+ * Trait ArrayDecoratorTrait
+ * @package NicMart\Arrayze
+ */
 trait ArrayDecoratorTrait
 {
     /**
@@ -18,10 +21,48 @@ trait ArrayDecoratorTrait
      */
     private $collection;
 
-    public function __construct(MapsCollection $collection)
+    /**
+     * @var mixed
+     */
+    private $value;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getIterator()
     {
-        $this->collection = $collection;
+        return $this->collection->mapValue($this->value);
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function offsetExists($offset)
+    {
+        return $this->collection->hasMap($offset);
+    }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function offsetGet($offset)
+    {
+        return $this->collection->apply($offset, $this->value);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function offsetSet($offset, $value)
+    {
+        throw new \LogicException("ArrayDecorator offsets are read only");
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function offsetUnset($offset)
+    {
+        throw new \LogicException("ArrayDecorator offsets are read only");
+    }
 } 

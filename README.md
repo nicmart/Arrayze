@@ -1,7 +1,7 @@
 # Arrayze
 [![Build Status](https://travis-ci.org/nicmart/Arrayze.png?branch=master)](https://travis-ci.org/nicmart/Arrayze)
-[![Coverage Status](https://coveralls.io/repos/nicmart/Arrayze/badge.png?branch=master)](https://coveralls.io/r/nicmart/Arrayze?branch=master)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/nicmart/Arrayze/badges/quality-score.png?s=e06818508807c109a8c9354a73fc1a5227426c09)](https://scrutinizer-ci.com/g/nicmart/StringTemplate/)
+[![Coverage Status](https://coveralls.io/repos/nicmart/Arrayze/badge.png)](https://coveralls.io/r/nicmart/Arrayze)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nicmart/Arrayze/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nicmart/Arrayze/?branch=master)
 
 A callback-based decorator that gives array access to values..
 
