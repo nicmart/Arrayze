@@ -11,10 +11,10 @@
 namespace NicMart\Arrayze;
 
 /**
- * Trait ArrayDecoratorTrait
+ * Trait ArrayAdapterTrait
  * @package NicMart\Arrayze
  */
-trait ArrayDecoratorTrait
+trait ArrayAdapterTrait
 {
     /**
      * @var MapsCollection
@@ -55,7 +55,7 @@ trait ArrayDecoratorTrait
      */
     public function offsetSet($offset, $value)
     {
-        throw new \LogicException("ArrayDecorator offsets are read only");
+        throw new \LogicException("ArrayAdapter offsets are read only");
     }
 
     /**
@@ -63,6 +63,6 @@ trait ArrayDecoratorTrait
      */
     public function offsetUnset($offset)
     {
-        throw new \LogicException("ArrayDecorator offsets are read only");
+        throw new \LogicException("ArrayAdapter offsets are read only");
     }
 } 

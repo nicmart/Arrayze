@@ -10,9 +10,9 @@
 
 namespace NicMart\Arrayze;
 
-class ArrayDecorator implements \ArrayAccess, \IteratorAggregate
+class ArrayAdapter implements \ArrayAccess, \IteratorAggregate
 {
-    use ArrayDecoratorTrait;
+    use ArrayAdapterTrait;
 
     /**
      * @param mixed             $value

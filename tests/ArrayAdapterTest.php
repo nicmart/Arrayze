@@ -11,14 +11,14 @@
 namespace NicMart\Arrayze\Test;
 
 
-use NicMart\Arrayze\ArrayDecorator;
+use NicMart\Arrayze\ArrayAdapter;
 use NicMart\Arrayze\MapsCollection;
 
-class ArrayDecoratorTest extends \PHPUnit_Framework_TestCase
+class ArrayAdapterTest extends \PHPUnit_Framework_TestCase
 {
     protected $collection;
 
-    /** @var  ArrayDecorator */
+    /** @var  ArrayAdapter */
     protected $arayzed;
 
     protected $obj = [
@@ -34,7 +34,7 @@ class ArrayDecoratorTest extends \PHPUnit_Framework_TestCase
             ->registerMap("foo", function($x) { return $x["a"]; })
             ->registerMap("bar", function($x) { return $x["b"]; });
 
-        $this->arayzed = new ArrayDecorator($this->obj, $this->collection);
+        $this->arayzed = new ArrayAdapter($this->obj, $this->collection);
     }
 
     public function testOffsetExists()
