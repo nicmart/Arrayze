@@ -31,7 +31,7 @@ trait ArrayAdapterTrait
      */
     public function getIterator()
     {
-        return $this->collection->mapValue($this->value);
+        return $this->collection->map($this->value, $this);
     }
 
     /**
@@ -47,7 +47,7 @@ trait ArrayAdapterTrait
      */
     public function offsetGet($offset)
     {
-        return $this->collection->apply($offset, $this->value);
+        return $this->collection->apply($offset, $this->value, $this);
     }
 
     /**

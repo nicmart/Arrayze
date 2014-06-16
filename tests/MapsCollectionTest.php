@@ -68,9 +68,9 @@ class MapsCollectionTest extends \PHPUnit_Framework_TestCase
     {
         $collection = new MapsCollection;
 
-        $collection->registerMap("foo", function($x){ return "foo" . $x; });
+        $collection->registerMap("foo", function($x, $y){ return "foo" . $x . $y; });
 
-        $this->assertSame("foobar", $collection->apply("foo", "bar"));
+        $this->assertSame("foobarbaz", $collection->apply("foo", "bar", "baz"));
     }
 
     public function testMapValue()
@@ -84,7 +84,7 @@ class MapsCollectionTest extends \PHPUnit_Framework_TestCase
 
         $ary = [];
 
-        foreach ($collection->mapValue("") as $key => $value)
+        foreach ($collection->map("") as $key => $value)
             $ary[$key] = $value;
 
         $this->assertSame([

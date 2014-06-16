@@ -32,7 +32,8 @@ class ArrayAdapterTest extends \PHPUnit_Framework_TestCase
 
         $this->collection
             ->registerMap("foo", function($x) { return $x["a"]; })
-            ->registerMap("bar", function($x) { return $x["b"]; });
+            ->registerMap("bar", function($x) { return $x["b"]; })
+            ->registerMap("baz", function($x, $adapted) { return $x["a"] . " " . $x["b"] ; });
 
         $this->arayzed = new ArrayAdapter($this->obj, $this->collection);
     }
@@ -40,7 +41,7 @@ class ArrayAdapterTest extends \PHPUnit_Framework_TestCase
     public function testOffsetExists()
     {
         $this->assertTrue(isset($this->arayzed["foo"]));
-        $this->assertFalse(isset($this->arayzed["baz"]));
+        $this->assertFalse(isset($this->arayzed["bog"]));
     }
 
     public function testOffsetGet()
@@ -49,7 +50,7 @@ class ArrayAdapterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame("bval", $this->arayzed["bar"]);
 
         $this->setExpectedException("InvalidArgumentException");
-        $this->assertSame("bval", $this->arayzed["baz"]);
+        $this->assertSame("bval", $this->arayzed["boo"]);
     }
 
     /**
@@ -76,7 +77,9 @@ class ArrayAdapterTest extends \PHPUnit_Framework_TestCase
             $ary[$key] = $value;
 
         $this->assertSame([
-            "foo" => "aval", "bar" => "bval"
+            "foo" => "aval",
+            "bar" => "bval",
+            "baz" => "aval bval"
         ], $ary);
     }
 }

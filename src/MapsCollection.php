@@ -81,11 +81,12 @@ class MapsCollection
      *
      * @return mixed
      */
-    public function apply($mapName, $value)
+    public function apply($mapName, $value/*, ...*/)
     {
-        $map = $this->getMap($mapName);
+        $args = func_get_args();
+        array_shift($args);
 
-        return $map($value);
+        return call_user_func_array($this->getMap($mapName), $args);
     }
 
     /**
@@ -93,11 +94,12 @@ class MapsCollection
      *
      * @return \Generator
      */
-    public function mapValue($value)
+    public function map($value/*, $value2, ... */)
     {
+        $args = func_get_args();
         foreach ($this->getMaps() as $name => $map)
         {
-            yield $name => $map($value);
+            yield $name => call_user_func_array($map, $args);
         }
     }
 
