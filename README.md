@@ -38,10 +38,10 @@ You can then specify a collection of maps:
 use NicMart\Arrayze\MapsCollection;
 
 $maps = (new MapsCollection)->registerMaps([
-    "first name" => function(Person $p) { return $p->getFirstName(); },
-    "last name" => function(Person $p) { return $p->getFirstName(); },
-    "full name" => function($_, $x) { return "{$x['first name']} {$x['last name']}"; },
-    "age" => function(Person $p) { return date("Y") - $p->getBirthYear(); },
+    "first name" =>   function(Person $p) { return $p->getFirstName(); },
+    "last name" =>    function(Person $p) { return $p->getFirstName(); },
+    "full name" =>    function($_, $x) { return "{$x['first name']} {$x['last name']}"; },
+    "age" =>          function(Person $p) { return date("Y") - $p->getBirthYear(); },
     "name and age" => function($_, $x) { return "{$x['full name]}, {$x['age']}" }
 ]);
 ```
@@ -59,6 +59,21 @@ $arrayzedNic = new ArrayAdapter($nic, $maps);
 echo $arrayzedNic["full name"];    // Prints "Nicolò Martini"
 echo $arrayzedNic["age"];          // Prints 31
 echo $arrayzedNic["name and age"]; // Prints "Nicolò Martini, 31"
+```
+
+`ArrayAdapter` implements also the `Iterator` interface, so you can iterate (lazily)
+through your arrayzed objects:
+
+```php
+foreach ($arrayzedNic as $key => $value)
+    echo "$key: $value\n";
+    
+// Prints
+// first name: Nicolò
+// last name: Martini
+// full name: Nicolò Martini
+// age: 31
+// name and age: Nicolò Martini, 31
 ```
 
 ## Install
