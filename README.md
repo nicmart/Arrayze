@@ -3,8 +3,40 @@
 [![Coverage Status](https://coveralls.io/repos/nicmart/Arrayze/badge.png)](https://coveralls.io/r/nicmart/Arrayze)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nicmart/Arrayze/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nicmart/Arrayze/?branch=master)
 
-A callback-based array adapter that gives array access to values.
+Give your values a lazy and functional array interface!
 
+## What is Arrayze?
+
+Arrayze gives you an [adapter](http://en.wikipedia.org/wiki/Adapter_pattern) for ArrayAccess and Traversable
+php interfaces. The adapter is built from a collection of callbacks, that maps the original value to runtime-computed
+ values.
+
+This means that you can easily give your objects or values an array-like interface, specifying how to compute
+ offsets through callbacks.
+
+## Example
+Let's suppose you have a Person class:
+
+```php
+class Person
+{
+    private $firstName;
+    private $lastName;
+    private $birthYear;
+
+    public function __construct($firstName, $surname, $birthYear) { ... }
+
+    public function getFirstName() { return $this->firstName; }
+    public function getLastName() { return $this->lastName; }
+    public function getBirthYear() { return $this->birthYear; }
+}
+```
+
+You specify then a collection of maps:
+
+```php
+
+```
 ## Install
 
 The best way to install Arrayze is [through composer](http://getcomposer.org).
