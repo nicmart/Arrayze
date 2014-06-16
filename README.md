@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/nicmart/Arrayze/badge.png)](https://coveralls.io/r/nicmart/Arrayze)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nicmart/Arrayze/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nicmart/Arrayze/?branch=master)
 
-A callback-based array adapter that gives array access to values..
+A callback-based array adapter that gives array access to values.
 
 ## Install
 
