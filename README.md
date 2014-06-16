@@ -42,7 +42,7 @@ $maps = (new MapsCollection)->registerMaps([
     "last name" =>    function(Person $p) { return $p->getFirstName(); },
     "full name" =>    function($_, $x) { return "{$x['first name']} {$x['last name']}"; },
     "age" =>          function(Person $p) { return date("Y") - $p->getBirthYear(); },
-    "name and age" => function($_, $x) { return "{$x['full name]}, {$x['age']}" }
+    "name and age" => function($_, $x) { return "{$x['full name']}, {$x['age']}" }
 ]);
 ```
 
