@@ -60,7 +60,24 @@ $collection = (new \NicMart\Arrayze\MapsCollection)->registerMaps([
 
 $adapted = new \NicMart\Arrayze\ArrayAdapter($person, $collection);
 
-$bench = new \Nicmart\Benchmark\FixedSizeEngine("Arrayze Benchmark");
+$bench = new \Nicmart\Benchmark\FixedSizeEngine("Arrayze Benchmark - Single Lookup");
+
+$bench
+    ->register('native', 'Native closure', function() use ($toArray, $person) {
+        $ary = $toArray($person);
+        $string = $ary["full name"];
+    }, true)
+    ->register('arrayze', 'Arrayze', function() use ($person, $collection) {
+        $adapted = new \NicMart\Arrayze\ArrayAdapter($person, $collection);
+        $string = $adapted["full name"];
+    }, true)
+;
+
+$bench->benchmark(100000);
+
+$groups[] = $bench->getResults();
+
+$bench = new \Nicmart\Benchmark\FixedSizeEngine("Arrayze Benchmark - Iteration");
 
 $bench
     ->register('native', 'Native closure', function() use ($toArray, $person) {
