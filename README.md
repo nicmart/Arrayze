@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/nicmart/Arrayze/badge.png)](https://coveralls.io/r/nicmart/Arrayze)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nicmart/Arrayze/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nicmart/Arrayze/?branch=master)
 
-Give your values a lazy and functional array interface!
+Give your values a lazy array interface!
 
 ## What is Arrayze?
 
@@ -32,11 +32,50 @@ class Person
 }
 ```
 
-You specify then a collection of maps:
+You can then specify a collection of maps:
 
 ```php
+use NicMart\Arrayze\MapsCollection;
 
+$maps = (new MapsCollection)->registerMaps([
+    "first name" =>   function(Person $p) { return $p->getFirstName(); },
+    "last name" =>    function(Person $p) { return $p->getFirstName(); },
+    "full name" =>    function($_, $x) { return "{$x['first name']} {$x['last name']}"; },
+    "age" =>          function(Person $p) { return date("Y") - $p->getBirthYear(); },
+    "name and age" => function($_, $x) { return "{$x['full name']}, {$x['age']}" }
+]);
 ```
+
+With that collection in place, you can now adapt Person instances to the new
+lazy array interface:
+
+```php
+use NicMart\Arrayze\ArrayAdapter;
+
+$nic = new Person("Nicolò", "Martini", 1983);
+
+$arrayzedNic = new ArrayAdapter($nic, $maps);
+
+echo $arrayzedNic["full name"];    // Prints "Nicolò Martini"
+echo $arrayzedNic["age"];          // Prints 31
+echo $arrayzedNic["name and age"]; // Prints "Nicolò Martini, 31"
+```
+
+`ArrayAdapter` implements also the `Iterator` interface, so you can iterate (lazily)
+through your arrayzed objects:
+
+```php
+foreach ($arrayzedNic as $key => $value)
+    echo "$key: $value\n";
+    
+// Prints
+// first name: Nicolò
+// last name: Martini
+// full name: Nicolò Martini
+// age: 31
+// name and age: Nicolò Martini, 31
+```
+
 ## Install
 
 The best way to install Arrayze is [through composer](http://getcomposer.org).
