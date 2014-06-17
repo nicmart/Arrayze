@@ -51,10 +51,7 @@ class MapsCollection
      */
     public function getMap($mapName)
     {
-        if (isset($this->maps[$mapName]))
-            return $this->maps[$mapName];
-
-        throw new \InvalidArgumentException("No map registered with name $mapName");
+        return $this->maps[$mapName];
     }
 
     /**
@@ -81,7 +78,7 @@ class MapsCollection
      *
      * @return mixed
      */
-    public function apply($mapName, $value/*, ...*/)
+    public function apply($mapName, $value1, $value2 = null)
     {
         $args = func_get_args();
         array_shift($args);
@@ -102,6 +99,4 @@ class MapsCollection
             yield $name => call_user_func_array($map, $args);
         }
     }
-
-
-} 
+}

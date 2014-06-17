@@ -54,16 +54,6 @@ class MapsCollectionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($foo, $collection->getMap("foo"));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testGetThrowsInvalidArgumentException()
-    {
-        $collection = new MapsCollection;
-
-        $collection->getMap("foo");
-    }
-
     public function testApply()
     {
         $collection = new MapsCollection;

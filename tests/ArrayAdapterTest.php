@@ -48,9 +48,6 @@ class ArrayAdapterTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertSame("aval", $this->arayzed["foo"]);
         $this->assertSame("bval", $this->arayzed["bar"]);
-
-        $this->setExpectedException("InvalidArgumentException");
-        $this->assertSame("bval", $this->arayzed["boo"]);
     }
 
     /**
