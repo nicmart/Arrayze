@@ -76,6 +76,9 @@ foreach ($arrayzedNic as $key => $value)
 // name and age: Nicolò Martini, 31
 ```
 
+### Convert to array
+You can easily convert your adapted object to a native array with the `ArrayAdapter::toArray()` method.
+
 ## Install
 
 The best way to install Arrayze is [through composer](http://getcomposer.org).

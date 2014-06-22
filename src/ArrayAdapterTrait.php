@@ -69,4 +69,20 @@ trait ArrayAdapterTrait
     {
         throw new \LogicException("ArrayAdapter offsets are read only");
     }
+
+    /**
+     * Converts the object to an array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $ary = [];
+
+        foreach ($this as $key => $value) {
+            $ary[$key] = $value;
+        }
+
+        return $ary;
+    }
 } 

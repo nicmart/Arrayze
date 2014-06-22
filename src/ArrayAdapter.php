@@ -10,7 +10,7 @@
 
 namespace NicMart\Arrayze;
 
-class ArrayAdapter implements \ArrayAccess, \IteratorAggregate
+class ArrayAdapter implements ArrayAdapterInterface
 {
     use ArrayAdapterTrait;
 

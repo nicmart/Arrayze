@@ -79,5 +79,14 @@ class ArrayAdapterTest extends \PHPUnit_Framework_TestCase
             "baz" => "aval bval"
         ], $ary);
     }
+
+    public function testToArray()
+    {
+        $this->assertSame([
+            "foo" => "aval",
+            "bar" => "bval",
+            "baz" => "aval bval"
+        ], $this->arayzed->toArray());
+    }
 }
  
